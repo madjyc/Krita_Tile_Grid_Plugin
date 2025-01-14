@@ -2,7 +2,7 @@
 ![Krita Version](https://img.shields.io/badge/krita-5.2.6-green.svg)
 ![Version](https://img.shields.io/badge/version-v0.1.1-orange.svg)
 
-# Krita Tile Grid Plugin
+# Krita "Tile Grid" Plugin
 
 **Tile Grid** lets you create a regular set of guides defining "tiles" (or "cells") with customizable dimensions, aspect ratios, and spacing.
 This tool is ideal for designing basic **tilesets**, **photoboards**, **storyboard layouts**, or even **single frames with user-defined margins**.
@@ -15,11 +15,11 @@ This tool is ideal for designing basic **tilesets**, **photoboards**, **storyboa
 
 2. Install the plugin (as a ZIP file, don't extract it!) in Krita: Start Krita, go to the menu `Tools` > `Scripts` > `Import Python Plugin...`, locate the plugin (ZIP file) and press <kbd>OK</kbd>. Then **restart Krita**.
 
-*If needed, you'll find more information on how to install Krita python plugins [here](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html)*
+*If needed, you'll find more information on how to install Krita python plugins [here](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html)*.
 
 3. Activate the plugin in Krita : In Krita, go to the menu `Settings` > `Configure Krita...` > `Python Plugin Manager`. Find the plugin **`Tile Grid`** in the list, **check it**, click <kbd>OK</kbd> and **restart Krita**.
 
-You can now use the plugin by clicking on the menu `Tools` > `Tile Grid`.
+You can now use the plugin by clicking on the menu `Tools` > `Scripts` > `Tile Grid`.
 
 ## How to use the plugin
 
