@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=tile_grid
+X-Python-2-Compatible=false
+X-Krita-Manual=tile_grid_manual.html
+Name=Tile Grid
+Comment=Add a set of guides defining "tiles" (or "cells") to the current document based on user-defined margins, gutters and number of tiles.
