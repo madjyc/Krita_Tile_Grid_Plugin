@@ -26,7 +26,7 @@ from PyQt5.QtWidgets import (
 import os, json
 
 
-PLUGIN_VERSION = '0.1.0'
+PLUGIN_VERSION = '0.1.1'
 
 EXTENSION_ID = 'pykrita_tile_grid'
 PLUGIN_MENU_ENTRY = i18n('Tile Grid')
