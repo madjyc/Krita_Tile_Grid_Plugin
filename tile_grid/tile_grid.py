@@ -121,8 +121,8 @@ class TileGridDialog(QDialog):
         self.num_tiles_y.setToolTip(i18n("Set the number of tiles vertically"))
         self.tile_ratio.setToolTip(i18n("Set the tile format ratio (width/height)"))
         self.clear_guides.setToolTip(i18n("Clear existing guides before adding new ones"))
-        self.lock_guides.setToolTip(i18n("Toggle the 'Lock Guides' option"))
-        self.snap_guides.setToolTip(i18n("Toggle the 'Snap to Guides' option"))
+        self.lock_guides.setToolTip(i18n("Lock guides so they are not accidentally moved"))
+        self.snap_guides.setToolTip(i18n("Toggle the 'View > Snap To... > Snap to Guides' option"))
 
         # Fill the comboboxes with the units
         self.margin_l_unit.addItems(self.UNITS)
