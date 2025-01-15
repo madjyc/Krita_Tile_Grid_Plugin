@@ -32,6 +32,6 @@ You're done! The plugin will automatically calculate the size of the tiles based
 
 Oh and you can save your settings as a **`preset`** and restore them later.
 
-Feel free to contact me on [Krita Artists](https://krita-artists.org/), there should be a thread dedicated to this plugin in the forum.
+Feel free to contact me on [Krita Artists](https://krita-artists.org/). There is a [thread dedicated to the Tile Grid plugin](https://krita-artists.org/t/tile-grid-a-plugin-for-creating-customizable-guide-layouts-for-storyboards-tilesets-and-more/) in the forum.
 
 #### Hope you enjoy this plugin!
