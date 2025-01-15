@@ -13,13 +13,11 @@ This tool is ideal for designing basic **tilesets**, **photoboards**, **storyboa
 
 1. Download the plugin: Click on the big green <kbd><> Code</kbd> button, then click on <kbd>Download ZIP</kbd> (or just click [here](https://github.com/madjyc/Krita_Tile_Grid_Plugin/archive/refs/heads/main.zip)).
 
-2. Install the plugin (as a ZIP file, don't extract it!) in Krita: Start Krita, go to the menu `Tools` > `Scripts` > `Import Python Plugin...`, locate the plugin (ZIP file) and press <kbd>OK</kbd>. Then **restart Krita**.
-
-*If needed, you'll find more information on how to install Krita python plugins [here](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html)*.
-
-3. Activate the plugin in Krita : In Krita, go to the menu `Settings` > `Configure Krita...` > `Python Plugin Manager`. Find the plugin **`Tile Grid`** in the list, **check it**, click <kbd>OK</kbd> and **restart Krita**.
+2. Install the plugin in Krita (as a ZIP file, don't extract it yourself!): Start Krita, go to the menu `Tools` > `Scripts` > `Import Python Plugin from File...`, locate the plugin (ZIP file) and press <kbd>OK</kbd>. A popup will ask you if you want to enable the plugin. Click on <kbd>Yes</kbd>, then **restart Krita**.
 
 You can now use the plugin by clicking on the menu `Tools` > `Scripts` > `Tile Grid`.
+
+*If needed, you'll find more information on how to install Krita python plugins [here](https://docs.krita.org/en/user_manual/python_scripting/install_custom_python_plugin.html)*.
 
 ## How to use the plugin
 
