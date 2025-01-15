@@ -1,6 +1,6 @@
 ![License](https://img.shields.io/badge/license-CC0_1.0-blue.svg)
 ![Krita Version](https://img.shields.io/badge/krita-5.2.6-green.svg)
-![Version](https://img.shields.io/badge/version-v0.1.1-orange.svg)
+![Version](https://img.shields.io/badge/version-v0.1.2-orange.svg)
 
 # Krita "Tile Grid" Plugin
 

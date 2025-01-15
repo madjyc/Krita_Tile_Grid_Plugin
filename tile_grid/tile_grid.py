@@ -26,7 +26,7 @@ from PyQt5.QtWidgets import (
 import os, json
 
 
-PLUGIN_VERSION = '0.1.1'
+PLUGIN_VERSION = '0.1.2'
 
 EXTENSION_ID = 'pykrita_tile_grid'
 PLUGIN_MENU_ENTRY = i18n('Tile Grid')
@@ -244,7 +244,6 @@ class TileGridDialog(QDialog):
         self.gutter_y_unit.currentIndexChanged.connect(lambda new_idx, params=self.gutter_y_params: self.on_combobox_index_changed(new_idx, params))
 
     def on_combobox_index_changed(self, new_idx, params):
-        #QMessageBox.information(None, "on_combobox_index_changed", f"Combobox params {str(params)}")
         #QMessageBox.information(None, PLUGIN_DIALOG_TITLE, f"Combobox index changed to {str(new_idx)}, old index {str(params["idx"])}, size {str(params["doc_size"])}")
         old_val = params["sbox"].value()
         old_unit = params["cbox"].itemText(params["idx"])
@@ -330,21 +329,21 @@ class TileGridDialog(QDialog):
 
     def get_current_preset(self):
         return {
-            "margin_l": self.margin_l.text(),
+            "margin_l": self.margin_l.value(),
             "margin_l_unit": self.margin_l_unit.currentText(),
-            "margin_r": self.margin_r.text(),
+            "margin_r": self.margin_r.value(),
             "margin_r_unit": self.margin_r_unit.currentText(),
-            "margin_t": self.margin_t.text(),
+            "margin_t": self.margin_t.value(),
             "margin_t_unit": self.margin_t_unit.currentText(),
-            "margin_b": self.margin_b.text(),
+            "margin_b": self.margin_b.value(),
             "margin_b_unit": self.margin_b_unit.currentText(),
-            "gutter_x": self.gutter_x.text(),
+            "gutter_x": self.gutter_x.value(),
             "gutter_x_unit": self.gutter_x_unit.currentText(),
-            "gutter_y": self.gutter_y.text(),
+            "gutter_y": self.gutter_y.value(),
             "gutter_y_unit": self.gutter_y_unit.currentText(),
-            "num_tiles_x": self.num_tiles_x.text(),
-            "num_tiles_y": self.num_tiles_y.text(),
-            "tile_ratio": self.tile_ratio.text(),
+            "num_tiles_x": self.num_tiles_x.value(),
+            "num_tiles_y": self.num_tiles_y.value(),
+            "tile_ratio": self.tile_ratio.value(),
             "clear_guides": self.clear_guides.isChecked(),
             "lock_guides": self.lock_guides.isChecked(),
             "snap_guides": self.snap_guides.isChecked()
@@ -388,10 +387,9 @@ class TileGridDialog(QDialog):
         self.clear_guides.setChecked(bool(preset.get("clear_guides", self.DEFAULT_CLEAR_GUIDES)))
         self.lock_guides.setChecked(bool(preset.get("lock_guides", self.DEFAULT_LOCK_GUIDES)))
         self.snap_guides.setChecked(bool(preset.get("snap_guides", self.DEFAULT_SNAP_GUIDES)))
-
+        
     def save_last_preset(self, preset):
         last_preset_path = os.path.join(os.path.expanduser("~"), self.LAST_PRESET_FILENAME + ".json")
-        #QMessageBox.information(None, PLUGIN_DIALOG_TITLE, "Saving last preset to " + last_preset_path)
         with open(last_preset_path, 'w') as file:
             json.dump(preset, file)
 
@@ -443,7 +441,7 @@ class TileGridDialog(QDialog):
         sbox = params["sbox"]
         unit = params["cbox"].currentText()
         doc_size = params["doc_size"]
-        #QMessageBox.information(None, "convert_pixels_to_value", "Size " + str(doc_size))
+
         if unit == self.UNIT_PX:
             sbox.setRange(0.0, doc_size)
         elif unit == self.UNIT_IN:
