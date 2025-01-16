@@ -26,7 +26,7 @@ from PyQt5.QtWidgets import (
 import os, json
 
 
-PLUGIN_VERSION = '0.1.2'
+PLUGIN_VERSION = '0.1.3'
 
 EXTENSION_ID = 'pykrita_tile_grid'
 PLUGIN_MENU_ENTRY = i18n('Tile Grid')
@@ -87,6 +87,14 @@ class TileGridDialog(QDialog):
         self.lock_guides = QCheckBox(i18n("Lock guides"))
         self.snap_guides = QCheckBox(i18n("Snap to guides"))
 
+        self.margin_l.setMinimum(0)
+        self.margin_r.setMinimum(0)
+        self.margin_t.setMinimum(0)
+        self.margin_b.setMinimum(0)
+        self.gutter_x.setMinimum(0)
+        self.gutter_y.setMinimum(0)
+        self.num_tiles_x.setMinimum(1)
+        self.num_tiles_y.setMinimum(1)
         self.tile_ratio.setDecimals(3)
         self.tile_ratio.setSingleStep(0.01)
         self.tile_ratio.setMinimum(0.01)
@@ -234,6 +242,7 @@ class TileGridDialog(QDialog):
 
         # Load the last used preset on initialization
         self.load_last_preset()
+        self.update_return_values()
 
         # Connect the comboboxes to on_combobox_index_changed with an indirection to allow more parameters
         self.margin_l_unit.currentIndexChanged.connect(lambda new_idx, params=self.margin_l_params: self.on_combobox_index_changed(new_idx, params))
@@ -242,6 +251,28 @@ class TileGridDialog(QDialog):
         self.margin_b_unit.currentIndexChanged.connect(lambda new_idx, params=self.margin_b_params: self.on_combobox_index_changed(new_idx, params))
         self.gutter_x_unit.currentIndexChanged.connect(lambda new_idx, params=self.gutter_x_params: self.on_combobox_index_changed(new_idx, params))
         self.gutter_y_unit.currentIndexChanged.connect(lambda new_idx, params=self.gutter_y_params: self.on_combobox_index_changed(new_idx, params))
+
+        # Connect the gutter spinboxes to calculate the time ratio
+        self.margin_l.valueChanged.connect(self.update_tile_ratio)
+        self.margin_r.valueChanged.connect(self.update_tile_ratio)
+        self.margin_t.valueChanged.connect(self.update_tile_ratio)
+        self.margin_b.valueChanged.connect(self.update_tile_ratio)
+        self.gutter_x.valueChanged.connect(self.update_tile_ratio)
+        self.gutter_y.valueChanged.connect(self.update_tile_ratio)
+        self.num_tiles_x.valueChanged.connect(self.update_tile_ratio)
+        self.num_tiles_y.valueChanged.connect(self.update_tile_ratio)
+
+    def update_tile_ratio(self, value):
+        self.update_return_values()
+        max_tile_size_x, max_tile_size_y = self.evaluate_max_tile_size()
+        tile_ratio = max_tile_size_x / max_tile_size_y
+        if self.tile_ratio.value() != tile_ratio:
+            self.tile_ratio.setValue(tile_ratio)
+
+    def evaluate_max_tile_size(self):
+        tile_size_x = (self.doc_size_x - self.ret_margin_l_px - self.ret_margin_r_px - (self.ret_num_tiles_x - 1) * self.ret_gutter_x_px) / self.ret_num_tiles_x
+        tile_size_y = (self.doc_size_y - self.ret_margin_t_px - self.ret_margin_b_px - (self.ret_num_tiles_y - 1) * self.ret_gutter_y_px) / self.ret_num_tiles_y
+        return tile_size_x, tile_size_y
 
     def on_combobox_index_changed(self, new_idx, params):
         #QMessageBox.information(None, PLUGIN_DIALOG_TITLE, f"Combobox index changed to {str(new_idx)}, old index {str(params["idx"])}, size {str(params["doc_size"])}")
@@ -263,9 +294,7 @@ class TileGridDialog(QDialog):
         except ValueError:
             QMessageBox.warning(None, PLUGIN_DIALOG_TITLE, i18n("Invalid input. Please enter valid numbers."))
         else:
-            max_tile_size_x = (self.doc_size_x - self.ret_margin_l_px - self.ret_margin_r_px - (self.ret_num_tiles_x - 1) * self.ret_gutter_x_px) / self.ret_num_tiles_x
-            max_tile_size_y = (self.doc_size_y - self.ret_margin_t_px - self.ret_margin_b_px - (self.ret_num_tiles_y - 1) * self.ret_gutter_y_px) / self.ret_num_tiles_y
-
+            max_tile_size_x, max_tile_size_y = self.evaluate_max_tile_size()
             if max_tile_size_x < 1 or max_tile_size_y < 1:
                 # Highlight the fields in red if the grid parameters are too big for the document size
                 if max_tile_size_x < 1:

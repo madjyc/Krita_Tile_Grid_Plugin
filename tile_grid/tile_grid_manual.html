@@ -8,18 +8,25 @@
 <body>
     <h1>Tile Grid Plugin</h1>
 
-    <p>This plugin lets you create a regular set of <b>guides</b> defining "tiles" (or "cells") with customizable dimensions, aspect ratios, and spacing.</p>
-    <p>This tool is ideal for designing basic <b>tilesets</b>, <b>photoboards</b>, <b>storyboard layouts</b>, or even <b>single frames with user-defined margins</b>.</p>
+    <p>This plugin lets you create a regular set of <b>guides</b> defining <i>"tiles"</i> (or <i>"cells"</i>) with customizable dimensions, aspect ratios, and spacing.</p>
+    <p>This tool is ideal for designing basic <b>tilesets</b>, <b>photoboards</b>, <b>storyboard or comic page layouts</b>, or even <b>single frames with user-defined margins</b>.</p>
 
     <h3>Usage</h3>
 
     <ul>
-        <li>Enter the <b>margins</b> you want for the grid;</li>
-        <li>Enter the <b>minimum spacing</b> you want between tiles;</li>
-        <li>Enter the desired number of <b>columns</b> and <b>rows</b> of tiles;</li>
-        <li>Specify the <b>format ratio</b> (i.e. width/height) for the tiles.</li>
+        <li>Specify the <b>margins</b> you want for the grid;</li>
+        <li>Specify the <b>spacing</b>  (<i>"gutters"</i>) between tiles;</li>
+        <li>Specify the desired number of <b>columns</b> and <b>rows</b> of tiles;</li>
     </ul>
     
+    <p>Entering the above values automatically calculates the optimal tile format ratio (i.e. width/height). If you need a specific tile format ratio:</p>
+
+    <ul>
+        <li>Specify the <b>format ratio</b> for the tiles.</li>
+    </ul>
+    
+    <p>This tells the plugin to consider the spacing between tiles as a hint (i.e. <b>minimum</b> spacing). The actual spacing will be automatically calculated to preserve the specified format ratio.</p>
+
     <p>You're done! The plugin will automatically calculate the size of the tiles based on the canvas size and create guides accordingly.</p>
 
     <p>Oh and you can save your settings as a <b>preset</b> and restore them later.</p>

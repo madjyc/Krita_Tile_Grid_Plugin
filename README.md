@@ -1,11 +1,11 @@
 ![License](https://img.shields.io/badge/license-CC0_1.0-blue.svg)
 ![Krita Version](https://img.shields.io/badge/krita-5.2.6-green.svg)
-![Version](https://img.shields.io/badge/version-v0.1.2-orange.svg)
+![Version](https://img.shields.io/badge/version-v0.1.3-orange.svg)
 
 # Krita "Tile Grid" Plugin
 
-**Tile Grid** lets you create a regular set of guides defining "tiles" (or "cells") with customizable dimensions, aspect ratios, and spacing.
-This tool is ideal for designing basic **tilesets**, **photoboards**, **storyboard layouts**, or even **single frames with user-defined margins**.
+**Tile Grid** lets you create a regular set of guides defining *"tiles"* (or *"cells"*) with customizable dimensions, aspect ratios, and spacing.
+This tool is ideal for designing basic **tilesets**, **photoboards**, **storyboard or comic page layouts**, or even **single frames with user-defined margins**.
 
 *Tested in Krita 5.2.6*
 
@@ -23,10 +23,15 @@ You can now use the plugin by clicking on the menu `Tools` > `Scripts` > `Tile G
 
 Very simple:
 
-- Enter the **`margins`** you want for the grid;
-- Enter the **`minimum spacing`** you want between tiles;
-- Enter the desired number of **`columns`** and **`rows`** of tiles;
-- Specify the **`format ratio`** (i.e. width/height) for the tiles.
+- Specify the **`margins`** you want for the grid;
+- Specify the **`spacing`** (*"gutters"*) between tiles;
+- Specify the desired number of **`columns`** and **`rows`** of tiles;
+
+Entering the above values automatically calculates the optimal tile format ratio (i.e. width/height). If you need a specific tile format ratio:
+
+- Specify the **`format ratio`** for the tiles.
+
+This tells the plugin to consider the spacing between tiles as a hint (i.e. **minimum** spacing). The actual spacing will be automatically calculated to preserve the specified format ratio.
 
 You're done! The plugin will automatically calculate the size of the tiles based on the canvas size and create guides accordingly.
 
